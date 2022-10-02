@@ -49,13 +49,13 @@ module.exports = {
             mumbai: POLYGONSCAN_API_KEY,
         },
     },
-    // gasReporter: {
-    //     enabled: REPORT_GAS,
-    //     currency: "USD",
-    //     outputFile: "gas-report.txt",
-    //     noColors: true,
-    //     coinmarketcap: COINMARKETCAP_API_KEY,
-    // },
+    gasReporter: {
+        enabled: false,
+        currency: "USD",
+        outputFile: "gas-report.txt",
+        noColors: true,
+        coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+    },
     namedAccounts: {
         deployer: {
             default: 0,
@@ -63,5 +63,8 @@ module.exports = {
         player: {
             default: 1,
         },
+    },
+    mocha: {
+        timeout: 200000, // 200 seconds max
     },
 }

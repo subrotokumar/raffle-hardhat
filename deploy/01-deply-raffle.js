@@ -40,7 +40,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         networkConfig[chainId]["gasLane"],
         subscriptionId,
         networkConfig[chainId]["callbackGasLimit"],
-        networkConfig[chainId]["keepersUpdateInterval"],
+        networkConfig[chainId]["interval"],
     ]
     const raffle = await deploy("Raffle", {
         from: deployer,
@@ -54,6 +54,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         log("Verifying...")
         await verify(raffle.address, arguments)
     }
+    log("----------------------------------------------------")
 }
 
 module.exports.tags = ["all", "raffle"]

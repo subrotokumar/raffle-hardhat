@@ -9,7 +9,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 error Raffle__NotEnoughETHEthered();
 error Raffle__TransferFailed();
 error Raffle__NotOpen();
-error Raffle_UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState);
+error Raffle__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState);
 
 /** @title A sample Raffle Contract
  *  @author Subroto Kumar
@@ -107,7 +107,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     ) external override {
         (bool upkeepNeeded, ) = checkUpkeep("");
         if (!upkeepNeeded) {
-            revert Raffle_UpkeepNotNeeded(
+            revert Raffle__UpkeepNotNeeded(
                 address(this).balance,
                 s_players.length,
                 uint256(s_raffleState)
@@ -142,7 +142,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     }
 
     /* View / Pure functions */
-    function getEntraceFee() public view returns (uint256) {
+    function getEntranceFee() public view returns (uint256) {
         return i_entraceFee;
     }
 
@@ -172,5 +172,9 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     function getRequestConfirmation() public pure returns (uint256) {
         return REQUEST_CONFIRMATION;
+    }
+
+    function getInterval() public view returns (uint256) {
+        return i_interval;
     }
 }
