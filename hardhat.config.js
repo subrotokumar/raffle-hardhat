@@ -26,7 +26,7 @@ module.exports = {
             url: RINKEBY_RPC_URL,
             accounts: [PRIVATE_KEY],
         },
-        mumbai: {
+        polygonMumbai: {
             chainId: 80001,
             url: MUMBAI_RPC_URL,
             accounts: [PRIVATE_KEY],
@@ -46,7 +46,7 @@ module.exports = {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {
             rinkeby: ETHERSCAN_API_KEY,
-            mumbai: POLYGONSCAN_API_KEY,
+            polygonMumbai: POLYGONSCAN_API_KEY,
         },
     },
     gasReporter: {
